@@ -11,7 +11,7 @@ class UserController extends Controller
         return view('users.index');
     }
     public function userlist(){
-        $user=User::all();
+        $user=User::latest()->paginate(20);
         return response()->json(['userlist'=>$user]);
     }
 }
