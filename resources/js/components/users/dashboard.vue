@@ -4,6 +4,8 @@
             <div class="card-body">
                 <h3>Manage Users</h3>
                 <Pagination :userlist="userlist" v-if="userlist!==null" v-on:get-page="getPage" />
+                
+               <PaginationDetails v-if="userlist !== null" :userlist="userlist" />
                 <table class="table table-hover">
                     <tr>
                         <th>Name</th>
@@ -22,13 +24,14 @@
                     </tbody>
                     
                 </table>
-                
+                <Pagination :userlist="userlist" v-if="userlist!==null" v-on:get-page="getPage" />
             </div>
         </div> 
     </div>
 </template>
 <script>
 import Pagination from '../Pagination/Pagination.vue'
+import PaginationDetails from '../Pagination/PaginationDetails.vue'
 export default {
     data(){
         return{
@@ -39,7 +42,8 @@ export default {
         }
     },
     components:{
-        Pagination
+        Pagination,
+        PaginationDetails
     },
     methods:{
         getusers(){
@@ -49,7 +53,8 @@ export default {
         })
         },
         getPage(event){
-            this.params.page   = event;
+            this.params.page = event;
+            window.scrollTo(0, 0)
             this.getusers();
         }
     },
