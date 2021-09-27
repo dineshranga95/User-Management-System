@@ -42186,7 +42186,7 @@ var render = function() {
                 _vm._v(" "),
                 _c("td", [_vm._v(_vm._s(users.email))]),
                 _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(users.created_at))]),
+                _c("td", [_vm._v(_vm._s(users.user_since))]),
                 _vm._v(" "),
                 _vm._m(1, true)
               ])

@@ -27,7 +27,12 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
-
+    public function getUserSinceAttribute(){
+        return date('F d, Y', strtotime($this->created_at));
+    }
+    protected $appends=[
+        'user_since'
+    ];
     /**
      * The attributes that should be cast to native types.
      *
@@ -35,6 +40,7 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'settings'=>'array'
     ];
     
 }
