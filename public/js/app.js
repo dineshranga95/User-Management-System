@@ -6439,7 +6439,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = ({});
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      userlist: null
+    };
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    axios.get('users/userlist').then(function (response) {
+      _this.userlist = response.data.userlist;
+    });
+  }
+});
 
 /***/ }),
 
@@ -42151,31 +42169,58 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", [
+    _c("div", { staticClass: "card mt-3" }, [
+      _c("div", { staticClass: "card-body" }, [
+        _c("h3", [_vm._v("Manage Users")]),
+        _vm._v(" "),
+        _c(
+          "table",
+          { staticClass: "table table-hover" },
+          [
+            _vm._m(0),
+            _vm._v(" "),
+            _vm._l(_vm.userlist, function(users) {
+              return _c("tr", { key: users.id }, [
+                _c("td", [_vm._v(_vm._s(users.name))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(users.email))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(users.created_at))]),
+                _vm._v(" "),
+                _vm._m(1, true)
+              ])
+            })
+          ],
+          2
+        )
+      ])
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("div", { staticClass: "card mt-3" }, [
-        _c("div", { staticClass: "card-body" }, [
-          _c("h3", [_vm._v("Manage Users")]),
-          _vm._v(" "),
-          _c("table", { staticClass: "table table-hover" }, [
-            _c("tr", [
-              _c("th", [_vm._v("Name")]),
-              _vm._v(" "),
-              _c("th", [_vm._v("Email")]),
-              _vm._v(" "),
-              _c("th", [_vm._v("User Since")]),
-              _vm._v(" "),
-              _c("th", [_vm._v("Action")])
-            ]),
-            _vm._v(" "),
-            _c("tr")
-          ])
+    return _c("tr", [
+      _c("th", [_vm._v("Name")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("Email")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("User Since")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("Action")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "btn-group" }, [
+        _c("button", { staticClass: "btn btn-sm btn-warning" }, [
+          _c("i", { staticClass: "fas fa-edit" })
         ])
       ])
     ])
